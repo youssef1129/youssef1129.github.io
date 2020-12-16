@@ -105,18 +105,19 @@
 
         function width(){
             var h = $('body').css("width");
+            var h2 = $('#maintit').css("font-size");
             var l = h.split("p");
-             
+            var l2 = h2.split("p");
+            var s1 = l2[0] - 10;
+            var s2 = l2[0] - 5;
+
             if(l[0]<440){
-               $('#maintit').css({"font-size":"2em"});
+               $('#maintit').css({"font-size": s1+"px"});
             }
             else if(l[0]>=440&&l[0]<640){
-               $('#maintit').css({"font-size":"2.7em"});
+               $('#maintit').css({"font-size": s2+"px"});
             }
-            else if(l[0]>=640){
-               $('#maintit').css({"font-size":"3em"});
-            }
-            $('#maintit').css({"margin-top":"0.5%"});
+      
         }
 
         });
