@@ -1,0 +1,283 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central perk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+       #pizzas,#pastas,#burgers,#mainmenu,#drinks{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      
+    .row{
+        width:101%;
+        
+    }
+    
+     a{
+         color: rgb(255, 255, 255)
+     }
+     h2{
+         text-align: center;
+         color: rgb(255, 255, 255);
+     }
+     h3 { 
+        position: absolute; 
+        top: 50%; 
+        margin-left: auto;
+        text-decoration: overline black;
+        
+    }
+    .image { 
+   position: relative; 
+   cursor: pointer;
+    }
+    h3 span { 
+   color: black; 
+   letter-spacing: -1px;  
+   padding: 15px; 
+   opacity: 0;
+}
+.image>img{
+    width: 100%;
+}
+#slide1>a>img{
+    padding-top: 0.5em;
+   padding-left: 0.2em;
+}
+#sm>a>img:hover{
+   cursor: pointer;
+}
+.col-sm-auto{
+    margin-left: 4%;
+}
+
+    </style>
+    <script>
+        $(document).ready(function(){
+
+          $('.image').mouseover(function(){
+            $(this).find("img").css("filter" , "blur(5px)");
+            $(this).find("span").css("opacity","1");
+            
+            
+          });
+
+          $('.image').mouseleave(function(){
+            $(this).find("img").css("filter", "blur(0px)");
+            $(this).find("span").css("opacity","0");
+          });
+         
+         $('#ico').click(function(){
+            $('#slide1').slideToggle('slow');
+         });
+         $('#shop').click(function(){
+            $('#slide2').slideToggle('slow');
+         });
+
+
+
+        $('.image').click(function(){
+            var x = $(this).find('span').text();
+            var txt = $("<h6></h6>").text(x)
+            $('#slide2').append(txt);
+            var splt = x.split(":");
+            var k =splt[1].replace(":","");
+            
+            var p = $('#tt').text();
+            $('#tt').text((parseFloat(k)+parseFloat(p)).toFixed(2));
+            $('#slide2').slideDown('slow');
+        });
+        $("#slide2").on('click','h6',function(){
+            var x = $(this).text();
+            var splt = x.split(":");
+            var k =splt[1].replace(":","");
+            var p = $('#tt').text();
+            $('#tt').text((parseFloat(p)-parseFloat(k)).toFixed(2));
+            $(this).remove();
+        });
+
+
+        });
+        </script>
+</head>
+<body style="font-family: Comic Sans MS, Comic Sans, cursive;font-weight: bolder;margin: 0;">
+    <div class="container-fluid p-0" style="background-color: black;">
+
+       <div class="row" style="position: sticky;top: 0;z-index: 2;background-color: black;border-bottom: 5px rgb(255, 255, 255) solid;width: 101%;">
+       
+        <div class="col-auto p-2" style="margin-left: 2%;">
+            <img id="shop" src="shopping-bag.png" alt="" style="cursor: pointer;">
+                <div class="container-fluid rounded" id="slide2" style="display:none;position: absolute;background-color: white;width: 15em;height: auto;margin-top: 10px;max-height: 300px;overflow: auto;">
+                   <h4 style="display: inline;">TOTAL : <h4 id="tt" style="display: inline;">0</h4><h4 style="display: inline;">$</h4> </h4>  
+                   
+                    
+                </div>
+        </div>
+        <h1 class="col" style="text-align: center;color:rgb(255, 255, 255) ;">CENTRAL PERK</h1>
+        
+           <div class="col-auto p-2">
+                    <img id="ico" src="ico.png" alt="" style="cursor: pointer;">
+                        <div id="slide1" class="rounded" style="display:none;position: absolute;background-color: black;" >
+                            <a href="#"><img src="home.png" alt=""></a>
+                            <a href="#mnmn"><img src="menu.png" alt="" style="padding-left: 0.35em;"></a>
+                            <a href="#about"><img src="about.png" alt=""></a>
+                            
+                        </div>
+           </div>
+           
+           
+
+       </div>
+
+
+
+         <h1 style="text-align: center;position: absolute;top: 35%;font-size: 5em;color: rgba(230, 230, 230, 0.555);width: 100%;">WELCOME</h1>
+          <img  src="photo-1565720643550-4577a062b20e.png" alt="" style="width: 100%; height: 80%;opacity: 0.2;">
+
+     
+       
+           <div id="mnmn" class="container-fluid" style="text-align: center;">
+                <a  href="#pizzas" class="p-2"><img class="container-fluid p-3" src="pizza.png" alt="" style="max-width: 18%;"></a>
+                <a  href="#pastas" class="p-2"><img  class="container-fluid p-3" src="spaguetti.png" alt="" style="max-width: 18%;"></a>
+                <a  href="#burgers" class="p-2"><img class="container-fluid p-3" src="burger.png" alt="" style="max-width: 18%;"></a>
+                <a  href="#drinks" class="p-2"><img class="container-fluid p-3" src="coffee-cup.png" alt="" style="max-width: 18%;"></a>
+          </div>
+       
+          
+         
+
+        <h2>PIZZAS</h2>
+        <div id="pizzas" class="row">
+              
+               <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                    <img src="pizzas/pizza1.png" alt="">
+                    <h3><span>PIZZA MARGHARITA : 7.99$</span></h3>
+               </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                    <img  src="pizzas/pizza2.png" alt="">
+                    <h3><span>PIZZA CHEESE : 6.49$</span></h3>
+             </div>
+                <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                    <img src="pizzas/pizza3.png" alt="">
+                    <h3><span>PIZZA PEPPERONI : 12.99$</span></h3>
+                </div>
+                <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                    <img src="pizzas/pizza4.png" alt="">
+                    <h3><span>PIZZA CHICKEN : 11.99$</span></h3>
+                </div>
+                
+                
+
+        </div>
+
+        <h2>PASTAS</h2>
+        <div id="pastas" class="row">
+               <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="pasta/p1.png" alt="" >
+                 <h3><span>CLASSIC DISH : 4$</span></h3>
+               </div>
+               <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                  <img  src="pasta/p2.png" alt="">
+                  <h3><span>FOUR CHEESE PASTA : 14.99$</span></h3>
+               </div>
+               <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                  <img  src="pasta/p3.png" alt="">
+                  <h3><span>HOME-STYLE BAKED PASTA : 15.99$</span></h3>
+               </div>
+               <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                  <img  src="pasta/p4.png" alt="">
+                  <h3><span>SPAGHETTI : 7:50$</span></h3>
+               </div>
+
+        </div>
+        <h2>BURGERS</h2>
+        <div id="burgers" class="row">
+            <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="burgers/burger1.png" alt="">
+                <h3><span>ALIEN : 8.99$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="burgers/burger2.png" alt="">
+                 <h3><span>THE BURGERSTER : 9.99$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="burgers/burger3.png" alt="">
+                 <h3><span>BLACK PLATE : 4.99$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="burgers/burger4.png" alt="">
+                 <h3><span>CENTRAL PERK SPECIAL : 15$</span></h3>
+              </div>
+        </div>
+        <h2>DRINKS</h2>       
+        <div id="drinks" class="row">
+            <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="coffe/coffe1.png" alt="">
+                <h3><span>BLACK : 2.70$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="coffe/coffe2.png" alt="">
+                 <h3><span>LATTE : 3.65$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="coffe/coffe3.png" alt="">
+                 <h3><span>AMERICANO : 3.25$</span></h3>
+              </div>
+              <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                 <img  src="coffe/coffe4.png" alt="">
+                 <h3><span>CAPPUCCINO : 3.65$</span></h3>
+              </div>
+
+             
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/avocado.png" alt="">
+                <h3><span>AVOCADO : 2.29$</span></h3>
+             </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/lemon.png" alt="">
+                <h3><span>LEMON : 1.99$</span></h3>
+             </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/orange.png" alt="">
+                <h3><span>ORANGE : 1.49$</span></h3>
+             </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/strawberries.png" alt="">
+                <h3><span>STRAWBERRIES : 2.65$</span></h3>
+             </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/icecream1.png" alt="">
+                <h3><span>ICECREAM : 2.25$</span></h3>
+             </div>
+             <div class="col-sm-auto p-4 image" style="max-width: 70%;">
+                <img  src="juices/icecream2.png" alt="">
+                <h3><span>CENTRALFLURY : 3.65$</span></h3>
+             </div>
+
+
+            
+        </div>
+         
+        <footer id="about" class="container-fluid p-1" style="text-align: center;background-color: rgba(255, 255, 255, 0.925);">
+            <h1 style="color: rgb(0,0,0);">CONTACT</h1>
+            <img src="about/social-media.png" alt="">
+            <div id="sm" class="p-3">
+                <a href="https://github.com/youssef1129" target="blank"><img src="about/github.png" alt=""></a>
+                <a href="https://www.instagram.com/youssefmaazouz_/" target="blank"><img src="about/instagram.png" alt=""></a>
+                <a href="https://www.linkedin.com/in/youssef-maazouz-7838201bb/" target="blank"><img src="about/linkedin.png" alt=""></a>
+            </div>
+            
+            <h6 style="text-align: left;" >all rights not reserved &copy;</h6>
+        </footer>
+
+    
+    </div>
+    
+</body>
+</html>
