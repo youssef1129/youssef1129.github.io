@@ -1,0 +1,264 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <script src="jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        h1{
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            background-color: dimgray;
+            font-size: 600%;
+            border:  rgba(24, 24, 24, 0.884) 3px solid;
+            cursor: pointer;
+        }
+        .col{
+            max-width: 150px;
+        }
+        .row{
+            justify-content:center;  
+            max-height: 150px;      
+        }
+        body,h1{
+            background-color: rgb(207, 255, 145);
+            font-family:'Comic Sans MS', Comic Sans, cursive;
+        }
+        #c1,#c2,#c3{
+            border-top: 0px;
+        }
+        #c7,#c8,#c9{
+            border-bottom: 0px;
+        }
+        #c1,#c4,#c7{
+            border-left: 0px;
+        }
+        #c3,#c6,#c9{
+            border-right: 0px;
+        }
+        #cc1,#cc2,#cc3{
+            border-top: 0px;
+        }
+        #cc7,#cc8,#cc9{
+            border-bottom: 0px;
+        }
+        #cc1,#cc4,#cc7{
+            border-left: 0px;
+        }
+        #cc3,#cc6,#cc9{
+            border-right: 0px;
+        }
+        h3{
+            text-align: center;
+        }
+        .lft{
+            text-align: left;
+        }
+        
+    </style>
+    <script>
+        $(document).ready(function(){
+            var cnt = 0;
+            var k =[$('#cc1'),$('#cc2'),$('#cc3'),$('#cc4'),$('#cc5'),$('#cc6'),$('#cc7'),$('#cc8'),$('#cc9')];
+
+            $('#2players').on('click','h1',function(){
+               if($(this).text()==""){
+                if(cnt ==0 || cnt ==2 ||cnt==4||cnt==6||cnt==8){
+                   $(this).text('X').css("color","black");
+                    cnt++;
+                    check();
+                }
+                else if(cnt ==1 || cnt ==3 ||cnt==5||cnt==7){
+                    $(this).text('O').css("color","white");
+                    cnt++;
+                    check();
+                }
+            }
+            });
+            $('#1players').on('click','h1',function(){
+                
+               if($(this).text()==""){
+                if(cnt ==0 || cnt ==2 ||cnt==4||cnt==6||cnt==8){
+                    
+                   $(this).text('X').css("color","black");
+                    cnt = cnt +2;
+                    check2();
+                   shuffle(k);
+                   for(var i = 0 ;i<=k.length;i++){
+                       if(k[i].text()==""){
+                        k[i].text("O").css("color","white");
+                        check2();
+                        break;
+                       }
+                   }
+                    
+                    
+                    
+                }
+            }
+            });
+            function shuffle(array) {
+                array.sort(() => Math.random() - 0.5);
+            }
+
+            $('#res').click(function(){
+                    cnt=0;
+                    $('h1').text("");
+                    $('#p1').text("0");
+                    $('#p2').text("0");
+            });
+            $('#res2').click(function(){
+                    cnt=0;
+                    $('h1').text("");
+                    $('#pp1').text("0");
+                    $('#pp2').text("0");
+            });
+            function check(){
+                if($('#c1').text()=="X"&&$('#c2').text()=="X"&&$('#c3').text()=="X" || $('#c4').text()=="X"&&$('#c5').text()=="X"&&$('#c6').text()=="X" || $('#c7').text()=="X"&&$('#c8').text()=="X"&&$('#c9').text()=="X" || $('#c1').text()=="X"&&$('#c4').text()=="X"&&$('#c7').text()=="X" || $('#c2').text()=="X"&&$('#c5').text()=="X"&&$('#c8').text()=="X" || $('#c3').text()=="X"&&$('#c6').text()=="X"&&$('#c9').text()=="X" || $('#c1').text()=="X"&&$('#c5').text()=="X"&&$('#c9').text()=="X" || $('#c3').text()=="X"&&$('#c5').text()=="X"&&$('#c7').text()=="X" ){
+                    $('#p1').text(parseInt($('#p1').text())+1);
+                    
+                    cnt=0;
+                    $('h1').text("");
+                    $('#p1').animate({opacity: '0.2'}, "slow");
+                     $('#p1').animate({opacity: '1'}, "slow");
+                }
+                else if($('#c1').text()=="O"&&$('#c2').text()=="O"&&$('#c3').text()=="O" || $('#c4').text()=="O"&&$('#c5').text()=="O"&&$('#c6').text()=="O" || $('#c7').text()=="O"&&$('#c8').text()=="O"&&$('#c9').text()=="O" || $('#c1').text()=="O"&&$('#c4').text()=="O"&&$('#c7').text()=="O" || $('#c2').text()=="O"&&$('#c5').text()=="O"&&$('#c8').text()=="O" || $('#c3').text()=="O"&&$('#c6').text()=="O"&&$('#c9').text()=="O" || $('#c1').text()=="O"&&$('#c5').text()=="O"&&$('#c9').text()=="O" || $('#c3').text()=="O"&&$('#c5').text()=="O"&&$('#c7').text()=="O"){
+                    $('#p2').text(parseInt($('#p2').text())+1);
+                    cnt=0;
+                    $('h1').text("");
+                    $('#p2').animate({opacity: '0.2'}, "slow");
+                     $('#p2').animate({opacity: '1'}, "slow");
+                }
+                else if(cnt ==9){
+                cnt=0;
+                   alert("draw");
+                   $('h1').text("");
+               }
+            }
+            function check2(){
+
+                if($('#cc1').text()=="X"&&$('#cc2').text()=="X"&&$('#cc3').text()=="X" || $('#cc4').text()=="X"&&$('#cc5').text()=="X"&&$('#cc6').text()=="X" || $('#cc7').text()=="X"&&$('#cc8').text()=="X"&&$('#cc9').text()=="X" || $('#cc1').text()=="X"&&$('#cc4').text()=="X"&&$('#cc7').text()=="X" || $('#cc2').text()=="X"&&$('#cc5').text()=="X"&&$('#cc8').text()=="X" || $('#cc3').text()=="X"&&$('#cc6').text()=="X"&&$('#cc9').text()=="X" || $('#cc1').text()=="X"&&$('#cc5').text()=="X"&&$('#cc9').text()=="X" || $('#cc3').text()=="X"&&$('#cc5').text()=="X"&&$('#cc7').text()=="X" ){
+                    $('#pp1').text(parseInt($('#pp1').text())+1);
+                    cnt=0;
+                    $('h1').text("");
+                    $('#pp1').animate({opacity: '0.2'}, "slow");
+                     $('#pp1').animate({opacity: '1'}, "slow");
+                }
+                else if($('#cc1').text()=="O"&&$('#cc2').text()=="O"&&$('#cc3').text()=="O" || $('#cc4').text()=="O"&&$('#cc5').text()=="O"&&$('#cc6').text()=="O" || $('#cc7').text()=="O"&&$('#cc8').text()=="O"&&$('#cc9').text()=="O" || $('#cc1').text()=="O"&&$('#cc4').text()=="O"&&$('#cc7').text()=="O" || $('#cc2').text()=="O"&&$('#cc5').text()=="O"&&$('#cc8').text()=="O" || $('#cc3').text()=="O"&&$('#cc6').text()=="O"&&$('#cc9').text()=="O" || $('#cc1').text()=="O"&&$('#cc5').text()=="O"&&$('#cc9').text()=="O" || $('#cc3').text()=="O"&&$('#cc5').text()=="O"&&$('#cc7').text()=="O"){
+                    $('#pp2').text(parseInt($('#pp2').text())+1);
+                    cnt=0;
+                    $('h1').text("");
+                    $('#pp2').animate({opacity: '0.2'}, "slow");
+                     $('#pp2').animate({opacity: '1'}, "slow");
+                }
+               
+               else if(k[0].text()!=""&&k[1].text()!=""&&k[2].text()!=""&&k[3].text()!=""&&k[4].text()!=""&&k[5].text()!=""&&k[6].text()!=""&&k[7].text()!=""&&k[8].text()!=""){
+                cnt=0;
+                   alert("draw");
+                   $('h1').text("");
+               }
+               
+            
+   
+            }
+
+            $('#2p').click(function(){
+                $('#menu').hide();
+                $('#back').show();
+                $('#2players').slideDown('slow');
+            });
+            $('#1p').click(function(){
+                $('#menu').hide();
+                $('#back').show();
+                $('#1players').slideDown('slow');
+            });
+            $('#back').click(function(){
+                cnt=0;
+                $('h1').text("");
+                $('#2players').slideUp('slow');
+                $('#1players').slideUp('slow');
+                $('#menu').show("slow");
+                $('#back').hide();
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+    <div id="menu" class="container-fluid p-5" style="text-align: center;">
+        <h2 style="font-size: 3em;">TIC-TAC-TOE</h2>
+        <button id="1p" type="button" class="btn btn-danger">1 PLAYERS</button>
+        <button id="2p" type="button" class="btn btn-danger">2 PLAYERS</button>
+    </div>
+
+    <button id="back" type="button" class="btn btn-info" style="position: absolute;bottom: 0%;display: none;">BACK</button>
+
+
+    <div id="2players" style="display: none;">
+        <div class="row" style="box-shadow: grey 10px 10px 10px;width: 101%;background-color: rgba(255, 255, 255, 0.459);">
+            <h3 class="col-auto pl-4">PLAYER1 :</h3>
+            <h3 id="p1" class="col lft" >0</h3>
+            <h3 class="col-auto" >PLAYER2 :</h3>
+            <h3 id="p2" class="col lft">0</h3>
+        </div>
+        
+        <div class="container p-3">
+            <div class="row" >
+                <h1 id="c1" class="col"></h1>
+                <h1 id="c2" class="col"></h1>
+                <h1 id="c3" class="col"></h1>
+            </div>
+            <div class="row">
+                <h1 id="c4" class="col"></h1>
+                <h1 id="c5" class="col"></h1>
+                <h1 id="c6" class="col"></h1>
+            </div>
+            <div class="row">
+                <h1 id="c7" class="col"></h1>
+                <h1 id="c8" class="col"></h1>
+                <h1 id="c9" class="col"></h1>
+            </div>
+
+        </div>
+        <div style="position:absolute; bottom: 0%;right: 0%;">
+                <button id="res" type="button" class="btn" style="background-color: rgba(255, 255, 255, 0.459);border: rgb(144, 175, 241) 1px solid;">RESTART</button>
+            </div>
+    </div>
+
+    <div id="1players" style="display: none;">
+        <div class="row" style="box-shadow: grey 10px 10px 10px;width: 101%;background-color: rgba(255, 255, 255, 0.459);">
+            <h3 class="col-auto pl-4">PLAYER1 :</h3>
+            <h3 id="pp1" class="col lft" >0</h3>
+            <h3 class="col-auto" >COMPUTER :</h3>
+            <h3 id="pp2" class="col lft">0</h3>
+        </div>
+        
+        <div class="container p-3">
+            <div class="row cls" >
+                <h1 id="cc1"></h1>
+                <h1 id="cc2"></h1>
+                <h1 id="cc3"></h1>
+            </div>
+            <div class="row cls">
+                <h1 id="cc4"></h1>
+                <h1 id="cc5"></h1>
+                <h1 id="cc6"></h1>
+            </div>
+            <div class="row cls">
+                <h1 id="cc7"></h1>
+                <h1 id="cc8"></h1>
+                <h1 id="cc9"></h1>
+            </div>
+
+        </div>
+            <div style="position:absolute; bottom: 0%;right: 0%;">
+                <button id="res2" type="button" class="btn" style="background-color: rgba(255, 255, 255, 0.459);border: rgb(144, 175, 241) 1px solid;">RESTART</button>
+            </div>
+    </div>
+
+
+</body>
+</html>
