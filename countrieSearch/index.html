@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>countrySearch</title>
+    <script>
+
+
+        $(document).ready(function () {
+
+            $('#btn').click(function () {
+                var url = "https://restcountries.eu/rest/v2/name/"
+                url = url + $('#inp').val()
+                $.getJSON(url, function (result) {
+                    $('#name').text(result[0].name)
+                    $('#capital').text(result[0].capital)
+                    $('#region').text(result[0].region)
+                    $('#population').text(result[0].population)
+                    $('#area').text(result[0].area)
+                    $('#borders').text(result[0].borders)
+                    $('img').attr("src", result[0].flag)
+                })
+
+            })
+
+        })
+    </script>
+    <style>
+        td:hover{
+            background-color: rgba(197, 172, 172, 0.481);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container pt-4">
+
+        <input id="inp" class="form-control" type="text" placeholder="ENTER A COUNTRY NAME">
+        <button id="btn" type="button" class="btn btn-dark" style="width: 100%;">SEARCH</button>
+        <table class="table bg-light">
+            <thead>
+                <tr>
+                    <th >Name</th>
+                    <th >Capital</th>
+                    <th >Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="name" ></td>
+                    <td id="capital" ></td>
+                    <td id="region" ></td>
+                </tr>
+            </tbody>
+
+            <thead>
+                <tr>
+                    <th >Population</th>
+                    <th >Area</th>
+                    <th >Borders with</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="population" ></td>
+                    <td id="area" ></td>
+                    <td id="borders" ></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <img class="col" src="" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>
