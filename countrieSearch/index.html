@@ -13,6 +13,8 @@
         $(document).ready(function () {
 
             $('#btn').click(function () {
+                $('.data').slideDown('slow')
+
                 var url = "https://restcountries.eu/rest/v2/name/"
                 url = url + $('#inp').val()
                 $.getJSON(url, function (result) {
@@ -30,8 +32,12 @@
         })
     </script>
     <style>
+        
         td:hover{
             background-color: rgba(197, 172, 172, 0.481);
+        }
+        .data{
+            display: none;
         }
     </style>
 </head>
@@ -51,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="data">
                     <td id="name" ></td>
                     <td id="capital" ></td>
                     <td id="region" ></td>
@@ -66,7 +72,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="data">
                     <td id="population" ></td>
                     <td id="area" ></td>
                     <td id="borders" ></td>
