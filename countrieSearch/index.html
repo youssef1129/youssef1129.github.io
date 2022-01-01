@@ -19,13 +19,13 @@
                 var url = "https://restcountries.com/v3.1/name/"
                 url = url + $('#inp').val()
                 $.getJSON(url, function (result) {
-                    $('#name').text(result[0].name)
+                    $('#name').text(result[0].name.common)
                     $('#capital').text(result[0].capital)
                     $('#region').text(result[0].region)
                     $('#population').text(result[0].population)
                     $('#area').text(result[0].area)
                     $('#borders').text(result[0].borders)
-                    $('img').attr("src", result[0].flag)
+                    $('img').attr("src", result[0].flag.png)
                     
                 })
             })
